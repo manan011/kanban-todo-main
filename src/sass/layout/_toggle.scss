@@ -1,0 +1,48 @@
+@use "../util/index2" as *;
+.dropdown__switch {
+  display: flex;
+  margin: rem(16) auto;
+  padding: rem(14) rem(57);
+  justify-content: space-between;
+  background-color: var(--sub);
+  border-radius: rem(6);
+  width: rem(235);
+  height: rem(48);
+  .toggle {
+    input[type="checkbox"] {
+      display: none;
+      &:checked ~ label::after {
+        transform: translateX(20px);
+      }
+    }
+    label {
+      background-color: var(--primary-color);
+      border-radius: 12px;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: all ease-in-out 0.3s;
+      width: 40px;
+      height: 20px;
+      &::after {
+        content: " ";
+        background-color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        display: inline-block;
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        transition: all ease-in-out 0.3s;
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+  .light-icon,
+  .dark-icon {
+    svg {
+      fill: #979797;
+    }
+  }
+}

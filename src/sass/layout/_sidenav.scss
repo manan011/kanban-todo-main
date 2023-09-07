@@ -1,0 +1,172 @@
+@use "../util/index2" as *;
+.sidenav {
+  z-index: 1;
+  position: absolute;
+  @include breakpoint-down(xsmall) {
+    display: none;
+  }
+  @include breakpoint-down(medium) {
+    width: rem(260);
+  }
+  width: rem(300);
+  height: calc(100vh - rem(101.27));
+  background-color: var(--bg-card);
+  &__boards {
+    @include breakpoint-down(medium) {
+      padding: rem(15) rem(20) 0 0;
+    }
+    padding: rem(16) rem(24) 0 0;
+    h2 {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+      letter-spacing: 2.4px;
+      padding-left: rem(32);
+      color: var(--font-color-details);
+    }
+    ul {
+      padding: unset;
+      margin-top: 19px;
+      margin-bottom: 0;
+      .active {
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        background-color: var(--primary-color);
+        color: white;
+        svg {
+          fill: white;
+        }
+      }
+      li {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        color: var(--font-color);
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        &:hover:not(.active) {
+          color: var(--primary-color);
+          background-color: var(--button);
+          svg {
+            fill: var(--primary-color);
+          }
+        }
+        @include breakpoint-down(medium) {
+          padding: rem(14) 0 rem(15) rem(24);
+        }
+        padding: rem(14) 0 rem(15) rem(32);
+        svg {
+          pointer-events: none;
+          fill: #979797;
+        }
+        div {
+          pointer-events: none;
+          margin-left: rem(16);
+        }
+      }
+    }
+    &__create {
+      display: flex;
+      @include breakpoint-down(medium) {
+        padding: rem(14) 0 rem(15) rem(24);
+      }
+      padding: rem(14) 0 rem(15) rem(32);
+      cursor: pointer;
+      fill: white;
+      div {
+        margin-left: rem(16);
+        color: var(--primary-color);
+        font-weight: 700;
+        font-size: 15px;
+      }
+      svg {
+        width: 16px;
+        height: 16px;
+        fill: #635fc7;
+      }
+    }
+  }
+  &__switch {
+    bottom: rem(88);
+    left: rem(24);
+    position: absolute;
+    display: flex;
+    padding: rem(14) rem(57);
+    margin: 0 auto;
+    justify-content: space-between;
+    background-color: var(--sub);
+    border-radius: rem(6);
+    @include breakpoint-down(medium) {
+      left: rem(13);
+      width: rem(235);
+    }
+    width: calc(100% - rem(49));
+    height: rem(48);
+    .toggle {
+      input[type="checkbox"] {
+        display: none;
+        &:checked ~ label::after {
+          transform: translateX(20px);
+        }
+      }
+      label {
+        background-color: var(--primary-color);
+        border-radius: 12px;
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: all ease-in-out 0.3s;
+        width: 40px;
+        height: 20px;
+        &::after {
+          content: " ";
+          background-color: white;
+          border-radius: 50%;
+          cursor: pointer;
+          display: inline-block;
+          position: absolute;
+          left: 3px;
+          top: 3px;
+          transition: all ease-in-out 0.3s;
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+    .light-icon,
+    .dark-icon {
+      svg {
+        fill: #979797;
+      }
+    }
+  }
+  &__sidebar {
+    cursor: pointer;
+    position: absolute;
+    bottom: 32px;
+    color: var(--font-color-details);
+    span {
+      margin-right: rem(10);
+      fill: var(--font-color-details);
+    }
+    @include breakpoint-down(medium) {
+      width: rem(240);
+    }
+
+    width: rem(276);
+    height: rem(48);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    &:hover {
+      background-color: var(--button);
+      color: var(--primary-color);
+      span {
+        fill: var(--primary-color);
+      }
+    }
+  }
+}

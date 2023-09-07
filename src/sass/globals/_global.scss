@@ -1,0 +1,13 @@
+@use "../util/index2" as *;
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  // text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
+}

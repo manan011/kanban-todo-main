@@ -1,0 +1,105 @@
+@use "../util/index2" as *;
+.dropdown {
+  &__name {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+  }
+  &__options {
+    z-index: 12;
+    top: calc(rem(46) + rem(30));
+    position: absolute;
+    background-color: var(--bg-card);
+    border-radius: rem(8);
+    width: rem(264);
+    height: rem(322);
+    margin-inline: auto;
+    color: #979797;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+    box-shadow: 0px 10px 20px rgba(54, 78, 126, 0.25);
+    visibility: hidden;
+    &.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      visibility: visible;
+    }
+    &__boards {
+      padding: rem(16) rem(24) 0 0;
+    }
+    h2 {
+      font-size: rem(12);
+      font-weight: 700;
+      color: var(--font-color-details);
+      letter-spacing: 2.4px;
+      padding: 0 0 0 rem(24);
+      margin-bottom: 0;
+    }
+    ul {
+      padding: unset;
+      margin-top: 19px;
+      margin-bottom: 0;
+      .active {
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        background-color: var(--primary-color);
+        color: white;
+        svg {
+          fill: white;
+        }
+      }
+      li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        padding: rem(14) 0 rem(15) rem(16);
+        svg {
+          pointer-events: none;
+          fill: #979797;
+        }
+        div {
+          pointer-events: none;
+          margin-left: rem(16);
+        }
+      }
+    }
+  }
+  &__create {
+    display: flex;
+    padding: rem(14) 0 rem(15) rem(16);
+    cursor: pointer;
+    fill: white;
+    div {
+      margin-left: rem(16);
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 15px;
+    }
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--primary-color);
+    }
+  }
+}
+.content {
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  .main-content {
+    width: 100vw;
+    transform: translateX(300px);
+    @include breakpoint-down(medium) {
+      transform: translateX(260px);
+    }
+    @include breakpoint-down(small) {
+      transform: translateX(0px);
+    }
+    &.content-screen {
+      transform: translateX(0);
+    }
+  }
+}

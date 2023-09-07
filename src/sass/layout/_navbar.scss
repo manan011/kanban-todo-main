@@ -1,0 +1,187 @@
+@use "../util/index2" as *;
+header {
+  background-color: var(--bg-card);
+}
+nav {
+  @include breakpoint(small) {
+    display: flex;
+    align-items: center;
+    padding: 0;
+  }
+  padding: rem(20) 0;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    .add-task {
+      @include breakpoint(small) {
+        display: none;
+      }
+      width: rem(48);
+      height: rem(32);
+      background-color: var(--primary-color);
+      border-radius: rem(24);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: rem(16);
+    }
+    .ellipsis {
+      cursor: pointer;
+      position: relative;
+      &-options {
+        z-index: 9;
+        position: absolute;
+        right: 0;
+        top: 58px;
+        padding: rem(16);
+        display: flex;
+        flex-direction: column;
+        gap: rem(16);
+        width: rem(192);
+        box-shadow: 0px 10px 20px rgba(54, 78, 126, 0.25);
+        border-radius: 8px;
+        background-color: var(--bg-card);
+        transition: all 0.2s ease-in-out;
+        &.hide {
+          visibility: hidden;
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        &.show {
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(0);
+        }
+        > div {
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 23px;
+          &:first-child {
+            color: var(--font-color-details);
+          }
+          &:last-child {
+            color: #ea5555;
+          }
+        }
+      }
+    }
+    .add-task-larger {
+      width: rem(164);
+      height: rem(48);
+      border-radius: rem(24);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 19px;
+      background-color: #635fc7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--secondary-color);
+      }
+      @include breakpoint(small) {
+        margin-right: rem(24);
+      }
+      @include breakpoint-down(xsmall) {
+        display: none;
+      }
+    }
+  }
+  .dropdown__name {
+    color: var(--font-color);
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    .logo {
+      @include breakpoint(small) {
+        display: none;
+      }
+      height: rem(25);
+      picture {
+        @include breakpoint(small) {
+          align-self: center;
+        }
+      }
+    }
+    .dropdown {
+      @include breakpoint(small) {
+        display: none;
+      }
+      margin-left: rem(16);
+      .rot {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+      span {
+        svg {
+          margin-left: rem(8);
+          transition: transform 150ms ease-in-out;
+        }
+      }
+    }
+  }
+  .left__larger {
+    font-weight: 700;
+    font-size: rem(20);
+    margin-left: rem(16);
+    color: var(--font-color);
+    @include breakpoint-down(xsmall) {
+      display: none;
+    }
+  }
+  .logo-larger {
+    padding: rem(35) rem(32.47) rem(36.78) rem(8);
+    position: relative;
+    @include breakpoint-down(xsmall) {
+      display: none;
+    }
+    &.logo-screen {
+      @include breakpoint-down(medium) {
+        padding-right: rem(84.47);
+      }
+      padding-right: rem(123.47);
+    }
+    &::after {
+      content: "";
+      border: 1px solid var(--bg-color);
+      border-width: 0 1px 0 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
+  }
+}
+.side-toggle {
+  position: absolute;
+  width: 56px;
+  height: 48px;
+  left: 0px;
+  bottom: 32px;
+  background-color: #635fc7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 rem(100) rem(100) 0;
+  z-index: 10;
+  cursor: pointer;
+  svg {
+    fill: white;
+  }
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+  @include breakpoint-down(xsmall) {
+    display: none;
+  }
+}
